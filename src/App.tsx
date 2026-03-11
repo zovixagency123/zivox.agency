@@ -704,8 +704,12 @@ const ContactModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => voi
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
+    
+    const subject = encodeURIComponent(`Novo contacto de ${formState.name}`);
+    const body = encodeURIComponent(`Nome: ${formState.name}\nEmail: ${formState.email}\n\nMensagem:\n${formState.message}`);
+    
+    window.location.href = `mailto:zovix.agency123@gmail.com?subject=${subject}&body=${body}`;
+    
     setIsSubmitting(false);
     setIsSuccess(true);
     setTimeout(() => {
@@ -899,8 +903,7 @@ const Footer = () => {
               <span className="font-display font-bold text-lg tracking-tighter">ZIVOX</span>
             </div>
             <p className="text-brand-gray max-w-sm mb-8">
-              Uma agência web premium dedicada à engenharia de excelência digital 
-              através de design minimalista e movimento intencional.
+              Uma agência de design e engenharia web dedicada a criar plataformas digitais de alta performance. Combinamos estética apurada, tecnologia de ponta e estratégias focadas em resultados para impulsionar o crescimento do seu negócio.
             </p>
           </div>
 

@@ -44,7 +44,7 @@ const AboutPage = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-sm font-mono text-brand-gray mb-4"
           >
-            // A NOSSA HISTÓRIA
+            // SOBRE NÓS
           </motion.div>
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -78,6 +78,33 @@ const AboutPage = () => {
               ))}
             </motion.div>
           </div>
+        </div>
+
+        {/* History Section */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center mb-40">
+          <div className="space-y-8 order-2 lg:order-1">
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter">Como Tudo Começou</h2>
+            <p className="text-brand-gray text-lg leading-relaxed">
+              A Zivox não nasceu numa sala de reuniões corporativa, mas sim da visão partilhada de dois irmãos, Afonso e João Lopes. Movidos por uma paixão comum pelo design e pela engenharia de software, percebemos que o mercado precisava de uma abordagem mais autêntica e focada no cliente.
+            </p>
+            <p className="text-brand-gray text-lg leading-relaxed">
+              Combinando as nossas valências — a precisão técnica e o olhar estético —, decidimos criar uma agência que refletisse os nossos valores familiares: confiança, dedicação e excelência. O que começou como um projeto a dois, rapidamente se transformou numa agência premium, ajudando marcas a destacarem-se no mundo digital com soluções feitas à medida.
+            </p>
+          </div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="aspect-square rounded-[3rem] overflow-hidden border border-white/10 relative group order-1 lg:order-2"
+          >
+            <img 
+              src="https://picsum.photos/seed/zivox-brothers/1000/1000" 
+              alt="Afonso e João Lopes" 
+              className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+              referrerPolicy="no-referrer"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-black via-transparent to-transparent opacity-60" />
+          </motion.div>
         </div>
 
         {/* Vision Section */}
