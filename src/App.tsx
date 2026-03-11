@@ -23,6 +23,7 @@ import {
   ArrowRight
 } from "lucide-react";
 import React, { useState, useEffect, useRef } from "react";
+import emailjs from '@emailjs/browser';
 import { BrowserRouter, Routes, Route, Link, useLocation } from "react-router-dom";
 import PortfolioPage from "./pages/Portfolio";
 import ProcessPage from "./pages/Process";
@@ -705,18 +706,31 @@ const ContactModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => voi
     e.preventDefault();
     setIsSubmitting(true);
     
-    const subject = encodeURIComponent(`Novo contacto de ${formState.name}`);
-    const body = encodeURIComponent(`Nome: ${formState.name}\nEmail: ${formState.email}\n\nMensagem:\n${formState.message}`);
-    
-    window.location.href = `mailto:zovix.agency123@gmail.com?subject=${subject}&body=${body}`;
-    
-    setIsSubmitting(false);
-    setIsSuccess(true);
-    setTimeout(() => {
-      setIsSuccess(false);
-      onClose();
-      setFormState({ name: "", email: "", message: "" });
-    }, 2000);
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID || 'YOUR_SERVICE_ID',
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
+        {
+          from_name: formState.name,
+          reply_to: formState.email,
+          message: formState.message,
+          to_email: 'zovix.agency123@gmail.com'
+        },
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
+      );
+      
+      setIsSuccess(true);
+      setTimeout(() => {
+        setIsSuccess(false);
+        onClose();
+        setFormState({ name: "", email: "", message: "" });
+      }, 2000);
+    } catch (error) {
+      console.error("Failed to send email:", error);
+      alert("Ocorreu um erro ao enviar o email. Por favor, tenta novamente mais tarde.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -754,7 +768,7 @@ const ContactModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => voi
                 <div className="w-16 h-16 bg-emerald-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
                   <Sparkles className="w-8 h-8 text-emerald-400" />
                 </div>
-                <h3 className="text-3xl font-bold mb-4 tracking-tighter">Mensagem Enviada!</h3>
+                <h3 className="text-3xl font-bold mb-4 tracking-tighter">Email enviado com sucesso</h3>
                 <p className="text-brand-gray">Entraremos em contacto em breve.</p>
               </motion.div>
             ) : (
