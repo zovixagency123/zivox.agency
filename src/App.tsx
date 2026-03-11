@@ -712,9 +712,8 @@ const ContactModal = ({ isOpen, onClose }: { isOpen: boolean, onClose: () => voi
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID || 'YOUR_TEMPLATE_ID',
         {
           from_name: formState.name,
-          reply_to: formState.email,
-          message: formState.message,
-          to_email: 'zovix.agency123@gmail.com'
+          from_email: formState.email,
+          message: formState.message
         },
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY || 'YOUR_PUBLIC_KEY'
       );
