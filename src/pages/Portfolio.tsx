@@ -1,24 +1,24 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { ArrowUpRight, ExternalLink, Github, Globe } from 'lucide-react';
+import { ArrowUpRight, ExternalLink, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const projects = [
   {
-    title: "E-commerce Luxo",
-    category: "E-commerce / Moda",
-    description: "Plataforma de vendas de alta performance com checkout otimizado e design minimalista.",
-    image: "https://picsum.photos/seed/project1/1200/800",
-    tags: ["Next.js", "Stripe", "Tailwind"],
-    link: "#"
+    title: "La Rosa Negra",
+    category: "Restaurante / Gastronomia",
+    description: "Website elegante para um restaurante de prestígio, com foco na experiência gastronómica e reserva online.",
+    image: "https://picsum.photos/seed/larosanegra/1200/800",
+    tags: ["React", "Motion", "Tailwind"],
+    link: "https://larosanegra-site.vercel.app/"
   },
   {
-    title: "Portal Imobiliário",
-    category: "Web App / Real Estate",
-    description: "Sistema de gestão e visualização de imóveis com mapas interativos e filtros avançados.",
-    image: "https://picsum.photos/seed/project2/1200/800",
-    tags: ["React", "Mapbox", "Node.js"],
-    link: "#"
+    title: "Brincar e Cuidar",
+    category: "Serviços / Babysitting",
+    description: "Plataforma de serviços de babysitting e cuidados infantis, focada na confiança e segurança das famílias.",
+    image: "https://picsum.photos/seed/brincarecuidar/1200/800",
+    tags: ["React", "Tailwind", "Vite"],
+    link: "https://brincarecuidar.netlify.app/"
   },
   {
     title: "SaaS Analytics",
@@ -89,9 +89,6 @@ const PortfolioPage = () => {
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-6">
                   <a href={project.link} className="w-14 h-14 rounded-full bg-white text-black flex items-center justify-center hover:scale-110 transition-transform">
                     <Globe className="w-6 h-6" />
-                  </a>
-                  <a href={project.link} className="w-14 h-14 rounded-full bg-white/10 backdrop-blur-md text-white border border-white/20 flex items-center justify-center hover:scale-110 transition-transform">
-                    <Github className="w-6 h-6" />
                   </a>
                 </div>
               </div>
