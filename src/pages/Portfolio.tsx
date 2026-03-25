@@ -5,6 +5,30 @@ import { Link } from 'react-router-dom';
 
 const projects = [
   {
+    title: "Two Golden Brothers",
+    category: "Barbearia / Estilo",
+    description: "Espaço premium dedicado ao cuidado masculino, combinando tradição e tendências modernas de barbearia.",
+    image: "https://picsum.photos/seed/twogoldenbrothers/1200/800",
+    tags: ["React", "Tailwind", "Vite"],
+    link: "https://twogoldenbrothers.netlify.app/"
+  },
+  {
+    title: "DapperCut Barbershop",
+    category: "Barbearia / Estilo",
+    description: "Estilo e precisão na Covilhã. Cortes modernos e um cuidado excecional para o homem contemporâneo.",
+    image: "https://picsum.photos/seed/dappercut/1200/800",
+    tags: ["React", "Tailwind", "Vite"],
+    link: "https://dappercutbarbershop.netlify.app/"
+  },
+  {
+    title: "Marques Barbershop",
+    category: "Barbearia / Estilo",
+    description: "Barbearia de excelência focada em proporcionar uma experiência única de corte e cuidado da barba.",
+    image: "https://picsum.photos/seed/marquesbarbershop/1200/800",
+    tags: ["React", "Tailwind", "Vite"],
+    link: "https://marquesbarbershop.netlify.app/"
+  },
+  {
     title: "La Rosa Negra",
     category: "Restaurante / Gastronomia",
     description: "Website elegante para um restaurante de prestígio, com foco na experiência gastronómica e reserva online.",
@@ -21,20 +45,20 @@ const projects = [
     link: "https://brincarecuidar.netlify.app/"
   },
   {
-    title: "SaaS Analytics",
-    category: "Dashboard / B2B",
-    description: "Painel de controlo para análise de dados em tempo real com visualizações complexas.",
-    image: "https://picsum.photos/seed/project3/1200/800",
-    tags: ["D3.js", "TypeScript", "Firebase"],
-    link: "#"
+    title: "Risca ao Lado",
+    category: "Salão de Cabeleireiro / Beleza",
+    description: "Website moderno para um salão de cabeleireiro em Castelo Branco, focado em serviços de corte, coloração e tratamentos capilares.",
+    image: "https://picsum.photos/seed/riscaaolado/1200/800",
+    tags: ["React", "Tailwind", "Vite"],
+    link: "https://riscaaolado.netlify.app/"
   },
   {
-    title: "Agência Criativa",
-    category: "Website Institucional",
-    description: "Site de portfólio com animações fluidas e foco em storytelling visual.",
-    image: "https://picsum.photos/seed/project4/1200/800",
-    tags: ["Motion", "Vite", "Tailwind"],
-    link: "#"
+    title: "Barbearia ZZZ",
+    category: "Barbearia / Estilo",
+    description: "Plataforma digital para uma barbearia com estilo único, destacando os serviços de corte e barba com um design arrojado.",
+    image: "https://picsum.photos/seed/barbeariazzz/1200/800",
+    tags: ["React", "Tailwind", "Vite"],
+    link: "https://barbeariazzz.netlify.app/"
   }
 ];
 
