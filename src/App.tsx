@@ -20,7 +20,8 @@ import {
   MousePointer2,
   Sparkles,
   X,
-  ArrowRight
+  ArrowRight,
+  Menu
 } from "lucide-react";
 import React, { useState, useEffect, useRef } from "react";
 import emailjs from '@emailjs/browser';
@@ -95,6 +96,7 @@ const Background = () => {
 
 const Navbar = ({ onStartProject }: { onStartProject: () => void }) => {
   const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -102,52 +104,101 @@ const Navbar = ({ onStartProject }: { onStartProject: () => void }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navLinks = [
+    { name: "Início", path: "/" },
+    { name: "Sobre", path: "/sobre" },
+    { name: "Portfólio", path: "/portfolio" },
+    { name: "Processo", path: "/processo" },
+    { name: "Contacto", path: "/#contacto" }
+  ];
+
   return (
-    <motion.nav
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "py-4 glass" : "py-8 bg-transparent"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <Link to="/" className="flex items-center gap-2 group cursor-pointer">
-          <div className="w-8 h-8 bg-white rounded-sm flex items-center justify-center overflow-hidden relative">
-            <motion.div 
-              className="absolute inset-0 bg-gradient-to-tr from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity"
-            />
-            <span className="text-black font-bold text-xl relative z-10 group-hover:text-white transition-colors">Z</span>
+    <>
+      <motion.nav
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          scrolled ? "py-4 glass" : "py-8 bg-transparent"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+          <Link to="/" className="flex items-center gap-2 group cursor-pointer" onClick={() => setMobileMenuOpen(false)}>
+            <div className="w-8 h-8 bg-white rounded-sm flex items-center justify-center overflow-hidden relative">
+              <motion.div 
+                className="absolute inset-0 bg-gradient-to-tr from-blue-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity"
+              />
+              <span className="text-black font-bold text-xl relative z-10 group-hover:text-white transition-colors">Z</span>
+            </div>
+            <span className="font-display font-bold text-xl tracking-tighter">ZIVOX</span>
+          </Link>
+
+          <div className="hidden md:flex items-center gap-8 text-sm font-medium text-brand-gray">
+            {navLinks.map((item) => (
+              <Link 
+                key={item.name} 
+                to={item.path} 
+                className="hover:text-white transition-colors relative group"
+              >
+                {item.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all group-hover:w-full" />
+              </Link>
+            ))}
           </div>
-          <span className="font-display font-bold text-xl tracking-tighter">ZIVOX</span>
-        </Link>
 
-        <div className="hidden md:flex items-center gap-8 text-sm font-medium text-brand-gray">
-          {[
-            { name: "Início", path: "/" },
-            { name: "Sobre", path: "/sobre" },
-            { name: "Portfólio", path: "/portfolio" },
-            { name: "Processo", path: "/processo" },
-            { name: "Contacto", path: "/#contacto" }
-          ].map((item) => (
-            <Link 
-              key={item.name} 
-              to={item.path} 
-              className="hover:text-white transition-colors relative group"
+          <div className="hidden md:block">
+            <button 
+              onClick={onStartProject}
+              className="px-5 py-2 bg-white text-black text-sm font-medium rounded-full hover:bg-white/90 transition-all hover:scale-105 active:scale-95"
             >
-              {item.name}
-              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all group-hover:w-full" />
-            </Link>
-          ))}
-        </div>
+              Iniciar Projeto
+            </button>
+          </div>
 
-        <button 
-          onClick={onStartProject}
-          className="px-5 py-2 bg-white text-black text-sm font-medium rounded-full hover:bg-white/90 transition-all hover:scale-105 active:scale-95"
-        >
-          Iniciar Projeto
-        </button>
-      </div>
-    </motion.nav>
+          <button 
+            className="md:hidden text-white p-2"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+      </motion.nav>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="fixed inset-0 z-40 bg-brand-black/95 backdrop-blur-xl pt-24 px-6 flex flex-col md:hidden"
+          >
+            <div className="flex flex-col gap-6 text-2xl font-bold tracking-tighter mt-8">
+              {navLinks.map((item) => (
+                <Link 
+                  key={item.name} 
+                  to={item.path} 
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="text-brand-gray hover:text-white transition-colors"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </div>
+            <div className="mt-12">
+              <button 
+                onClick={() => {
+                  setMobileMenuOpen(false);
+                  onStartProject();
+                }}
+                className="w-full py-4 bg-white text-black font-bold rounded-xl hover:bg-white/90 transition-all flex items-center justify-center gap-2"
+              >
+                Iniciar Projeto
+              </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
