@@ -99,7 +99,7 @@ const AboutPage = () => {
           >
             <img 
               src="https://picsum.photos/seed/zivox-brothers/1000/1000" 
-              alt="Afonso e João Lopes" 
+              alt="Afonso e João Lopes - Fundadores da Zivox" 
               className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
               referrerPolicy="no-referrer"
             />
@@ -117,7 +117,7 @@ const AboutPage = () => {
           >
             <img 
               src="https://picsum.photos/seed/zivox-team/1000/1000" 
-              alt="Zivox Team" 
+              alt="Equipa da agência Zivox" 
               className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
               referrerPolicy="no-referrer"
             />

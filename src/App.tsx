@@ -189,7 +189,8 @@ const Hero = ({ onStartProject }: { onStartProject: () => void }) => {
           DISPONÍVEL PARA NOVOS PROJETOS
         </motion.div>
 
-        <motion.h1
+        <h1 className="sr-only">Criação de Websites para Negócios Locais</h1>
+        <motion.h2
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
@@ -197,7 +198,7 @@ const Hero = ({ onStartProject }: { onStartProject: () => void }) => {
         >
           Engenharia de <br />
           Excelência Digital
-        </motion.h1>
+        </motion.h2>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
@@ -529,7 +530,7 @@ const About = () => {
             >
               <img 
                 src="https://picsum.photos/seed/zivox-office/800/1000" 
-                alt="Zivox Office" 
+                alt="Escritório da agência Zivox" 
                 className="w-full h-full object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700"
                 referrerPolicy="no-referrer"
               />
@@ -546,7 +547,7 @@ const About = () => {
               <div className="aspect-video rounded-xl overflow-hidden mb-6 border border-white/10">
                 <img 
                   src="https://picsum.photos/seed/philosophy/600/400" 
-                  alt="Philosophy" 
+                  alt="Filosofia de trabalho da Zivox" 
                   className="w-full h-full object-cover opacity-50"
                   referrerPolicy="no-referrer"
                 />
@@ -588,7 +589,7 @@ const About = () => {
               <div className="aspect-[3/4] rounded-2xl overflow-hidden mb-8 border border-white/10 grayscale group-hover:grayscale-0 transition-all duration-500">
                 <img 
                   src="https://picsum.photos/seed/afonso/600/800" 
-                  alt="Afonso Lopes" 
+                  alt="Afonso Lopes - Cofundador da Zivox" 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                 />
@@ -606,7 +607,7 @@ const About = () => {
               <div className="aspect-[3/4] rounded-2xl overflow-hidden mb-8 border border-white/10 grayscale group-hover:grayscale-0 transition-all duration-500">
                 <img 
                   src="https://picsum.photos/seed/joao/600/800" 
-                  alt="João Lopes" 
+                  alt="João Lopes - Cofundador da Zivox" 
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                 />
