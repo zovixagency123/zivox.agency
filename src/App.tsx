@@ -1095,6 +1095,19 @@ const HomePage = ({ onStartProject }: { onStartProject: () => void }) => {
 
       <FAQ onContact={onStartProject} />
       
+      {/* Keywords Section for SEO */}
+      <section className="py-12 px-6 border-t border-white/5 bg-brand-black/30">
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-4 text-xs font-mono text-brand-gray uppercase tracking-[0.2em] opacity-40">
+            <span>Agência Zivox</span>
+            <span className="hidden sm:inline">•</span>
+            <span>criação de websites em Portugal</span>
+            <span className="hidden sm:inline">•</span>
+            <span>sites para negócios locais</span>
+          </div>
+        </div>
+      </section>
+
       <CTA onStartProject={onStartProject} />
     </main>
   );
